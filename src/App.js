@@ -6,6 +6,7 @@ import {
 
 import Welcome from './Welcome'
 import GuestGreeting from './GuestGreeting'
+import { useEffect, useState } from 'react';
 
 function App() {
 
@@ -18,8 +19,18 @@ function App() {
     })
 
     // Create DidMount with useEffect inside it can print "App Component Did Mount" & state value here
+    useEffect(() => {
+        console.log('App Component Did Mount');
+        console.log(state);
+    }, []);
 
     // Create DidUpdate with useEffect inside it can print "App Component Did Update" & state value here
+    useEffect(() => {
+        if (state.user.email) {
+          console.log('App Component Did Update');
+          console.log(state);
+        }
+    }, [state]);
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
