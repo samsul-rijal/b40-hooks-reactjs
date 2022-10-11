@@ -1,4 +1,5 @@
 //import useState here
+import { useState } from 'react';
 import { 
         Container, 
         Row, Col, Form, 
@@ -6,14 +7,33 @@ import {
 
 function ExampleForm() {
   //create state with attribute fullname, email & password here..
+  const [state, setState] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+  });
 
+  // const fullname = document.getElementById("fullname").value
   const handleOnChange = (e) => {
     // setState here
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
   }
+
+  // const navigate = useNavigate()
 
   const handleOnSubmit = (e) => {
     e.preventDefault()
     //print state value with console.log here
+    console.log(state);
+
+    // if(state.email === "admin@mail.com"){
+    //   navigate("/")
+    // } else if(state.email === "user@mail.com"){
+    //   navigate("/user")
+    // }
   }
 
     return (
